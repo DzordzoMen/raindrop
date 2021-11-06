@@ -1,7 +1,7 @@
 <template>
   <v-container class="container-on-header">
     <v-row>
-      <v-col cols="12" style="z-index: 5">
+      <v-col cols="12" style="z-index: 5" @click="$router.push({ name: 'Weather' })">
         <weather-card
           :name="currentWeather.weather[0].main || ''"
           :temp="currentWeather.dayTemperature || 0"
