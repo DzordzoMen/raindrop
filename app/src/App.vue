@@ -17,7 +17,7 @@
     >
       <v-btn :to="{ name: 'Rainwater' }">
         <span>
-          Woda
+          Zbiornik
         </span>
         <v-icon>
           mdi-water-sync
@@ -25,7 +25,7 @@
       </v-btn>
       <v-btn :to="{ name: 'Devices' }">
         <span>
-          Urządzenia
+          Smart home
         </span>
         <v-icon>
           mdi-tablet-cellphone
