@@ -3,31 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using RaindropApi.Model.Weather;
+using RaindropApi.Services;
 
 namespace RaindropApi.Controllers {
 	[ApiController]
 	[Route("[controller]")]
 	public class WeatherForecastController : ControllerBase {
-		private static readonly string[] Summaries = new[] {
-			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-		};
+		private readonly OpenWeatherService _weatherService;
 
-		private readonly ILogger<WeatherForecastController> _logger;
-
-		public WeatherForecastController(ILogger<WeatherForecastController> logger) {
-			_logger = logger;
+		public WeatherForecastController(OpenWeatherService weatherService) {
+			_weatherService = weatherService;
 		}
 
 		[HttpGet]
-		public IEnumerable<WeatherForecast> Get() {
-			var rng = new Random();
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast {
-				                 Date = DateTime.Now.AddDays(index),
-				                 TemperatureC = rng.Next(-20, 55),
-				                 Summary = Summaries[rng.Next(Summaries.Length)]
-			                 })
-			                 .ToArray();
+		public async Task<IEnumerable<WeatherForecast>> Get() {
+			return await _weatherService.GetForecast(50.049683m,19.944544m);
 		}
 	}
 }
