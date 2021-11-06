@@ -3,10 +3,10 @@
     <v-row>
       <v-col cols="12" style="z-index: 5">
         <weather-card
-          name="Burza"
-          :temp="12"
-          icon="10d"
-          :rainH="15"
+          :name="currentWeather.weather[0].main || ''"
+          :temp="currentWeather.dayTemperature || 0"
+          :icon="currentWeather.weather[0].icon || '10d'"
+          :rainH="currentWeather.rain || 0"
         />
       </v-col>
       <v-col
@@ -17,19 +17,19 @@
         <the-circle :percent="tankFillPercentage">
           <v-row dense class="flex-column text-center headline font-weight-bold">
             <v-col cols="12">
-              {{ tank.current.toFixed(0) }}
+              {{ tankCurrent.toFixed(0) }}
             </v-col>
             <v-col>
               <v-divider />
             </v-col>
             <v-col cols="12">
-              {{ tank.capacity.toFixed(0) }}
+              {{ tankCapacity.toFixed(0) }}
             </v-col>
           </v-row>
         </the-circle>
       </v-col>
       <v-col cols="12" class="text-center title">
-        Ogólna ilość zebranej wody przez Ciebie: <b>{{ collectedWater }}</b> L
+        Ogólna ilość zebranej wody przez Ciebie: <b>{{ tankTotalCollectedWater.toFixed(0) }}</b> L
       </v-col>
     </v-row>
   </v-container>
@@ -45,17 +45,25 @@ export default {
     TheCircle,
     WeatherCard,
   },
-  data: () => ({
-    collectedWater: 20000,
-    tank: {
-      current: 2000.17,
-      capacity: 10000,
-    },
-  }),
   computed: {
+    currentTankData() {
+      return this.$store.getters.firstDevice;
+    },
+    currentWeather() {
+      return this.$store.getters.currentWeather || {};
+    },
+    tankCurrent() {
+      return this.currentTankData?.currentAmount || 0;
+    },
+    tankCapacity() {
+      return this.currentTankData?.maxAmount || 100;
+    },
+    tankTotalCollectedWater() {
+      return this.currentTankData?.totalCollectedAmount || 0;
+    },
     tankFillPercentage() {
-      const { current, capacity } = this.tank;
-      return (current / capacity) * 100;
+      const { tankCurrent, tankCapacity } = this;
+      return (tankCurrent / tankCapacity) * 100;
     },
   },
 };
