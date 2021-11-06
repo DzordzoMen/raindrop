@@ -1,7 +1,7 @@
 <template>
-  <v-container>
+  <v-container class="container-on-header">
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" style="z-index: 5">
         <weather-card
           name="Burza"
           :temp="12"
@@ -12,7 +12,7 @@
       <v-col
         cols="12"
         class="d-flex align-center justify-center"
-        style="height: 475px"
+        style="height: 450px"
       >
         <the-circle :percent="tankFillPercentage">
           <v-row dense class="flex-column text-center headline font-weight-bold">
@@ -62,5 +62,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.container-on-header {
+  margin-top: -64px;
+}
 </style>
