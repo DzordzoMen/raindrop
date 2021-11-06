@@ -54,6 +54,10 @@ export default {
   data: () => ({
     navigation: null,
   }),
+  created() {
+    this.$store.dispatch('fetchDevices');
+    this.$store.dispatch('fetchWeather');
+  },
 };
 </script>
 
