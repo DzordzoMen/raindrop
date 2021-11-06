@@ -1,7 +1,12 @@
 <template>
-  <v-container>
+  <v-container class="container-on-header">
     <v-row dense>
-      <v-col cols="12" v-for="device in devices" :key="device.id">
+      <v-col
+        cols="6"
+        v-for="(device, index) in devices"
+        :key="device.id"
+        :style="index < 2 && 'z-index: 6'"
+      >
         <device-card v-bind="device" />
       </v-col>
     </v-row>
@@ -65,5 +70,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.container-on-header {
+  margin-top: -64px;
+}
 </style>
