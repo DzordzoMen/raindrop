@@ -55,5 +55,8 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.container {
+  background: #e7e7e7;
+}
 </style>
