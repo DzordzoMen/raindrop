@@ -98,7 +98,7 @@ export default {
       stroke-width: 20px;
       stroke-dasharray: 944;
       stroke-dashoffset: 944;
-      animation: circle-animation 2s linear forwards;
+      animation: circle-animation 1s linear forwards;
       transform-origin: center;
       transform-box: fill-box;
       transform: rotate(90deg);
