@@ -63,3 +63,16 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+  html, body {
+    font-family: 'Nunito', sans-serif;
+  }
+  #app {
+    font-family: 'Nunito', sans-serif;
+  }
+  .v-main__wrap {
+    background-color: #e1eeff;
+  }
+</style>
