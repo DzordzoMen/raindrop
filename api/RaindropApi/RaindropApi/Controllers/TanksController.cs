@@ -15,17 +15,17 @@ namespace RaindropApi.Controllers {
 			_mapper = mapper;
 		}
 		[HttpGet("id")]
-		public TankStatus GetById(int id) {
-			return TanksStore.TankStatusList.Single(a => a.Id == id);
+		public TankStatusDto GetById(int id) {
+			return _mapper.Map<TankStatusDto>(TanksStore.TankStatusList.Single(a => a.Id == id));
 		}
 		
 		[HttpGet]
-		public IEnumerable<TankStatus> Get() {
-			return TanksStore.TankStatusList;
+		public IEnumerable<TankStatusDto> Get() {
+			return TanksStore.TankStatusList.Select(a => _mapper.Map<TankStatusDto>(a));
 		}
 		
 		[HttpPost]
-		public TankStatus Post(TankStatusPost post) {
+		public TankStatusDto Post(TankStatusPost post) {
 			TankStatus tankStatus = new TankStatus() {
 				Id = TanksStore.TankStatusList.Count + 1,
 				Name = post.Name,
@@ -34,17 +34,17 @@ namespace RaindropApi.Controllers {
 				UpdatedAt = DateTime.Now,
 			};
 			TanksStore.TankStatusList.Add(tankStatus);
-			return tankStatus;
+			return _mapper.Map<TankStatusDto>(tankStatus);
 		}
 		
 		[HttpPut("id")]
-		public ActionResult<TankStatus> Put(int id, TankStatusPut put) {
+		public ActionResult<TankStatusDto> Put(int id, TankStatusPut put) {
 			var tankStatus = TanksStore.TankStatusList.SingleOrDefault(a => a.Id == id);
 			if (tankStatus == null) return NotFound();
 
 			_mapper.Map(put, tankStatus);
 			
-			return tankStatus;
+			return _mapper.Map<TankStatusDto>(tankStatus);
 		}
 		
 		[HttpDelete("id")]
@@ -54,13 +54,5 @@ namespace RaindropApi.Controllers {
 			TanksStore.TankStatusList.Remove(tankStatus);
 			return Ok();
 		}
-	}
-
-	public class TankStatus {
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public decimal CurrentAmount { get; set; }
-		public decimal MaxAmount { get; set; }
-		public DateTime UpdatedAt { get; set; }
 	}
 }

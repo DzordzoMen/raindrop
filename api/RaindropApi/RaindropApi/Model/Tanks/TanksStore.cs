@@ -11,11 +11,12 @@ namespace RaindropApi.Model.Tanks {
 					Name = "Zbiornik w ogrodzie",
 					CurrentAmount = 2077.12m,
 					MaxAmount = 10_000,
-					UpdatedAt = DateTime.Now.Subtract(TimeSpan.FromMinutes(1))
+					UpdatedAt = DateTime.Now.Subtract(TimeSpan.FromMinutes(1)),
+					History = TankDataGenerator.Generate(1),
 				}
 			};
 		}
 
-		public static List<TankStatus> TankStatusList { get; private set; }
+		public static List<TankStatus> TankStatusList { get; }
 	}
 }
