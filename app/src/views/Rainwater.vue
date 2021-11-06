@@ -29,7 +29,7 @@
         </the-circle>
       </v-col>
       <v-col cols="12" class="text-center title">
-        Ogólna ilość zebranej wody przez Ciebie: <b>{{ collectedWater }}</b> ml
+        Ogólna ilość zebranej wody przez Ciebie: <b>{{ collectedWater }}</b> L
       </v-col>
     </v-row>
   </v-container>
