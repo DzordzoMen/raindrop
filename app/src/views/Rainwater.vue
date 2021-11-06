@@ -12,7 +12,7 @@
       <v-col
         cols="12"
         class="d-flex align-center justify-center"
-        style="height: 450px"
+        style="height: 475px"
       >
         <the-circle :percent="tankFillPercentage">
           <v-row dense class="flex-column text-center headline font-weight-bold">
