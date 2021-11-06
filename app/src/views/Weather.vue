@@ -1,9 +1,12 @@
 <template>
   <v-container>
     <v-row dense>
-      <v-col cols="12" v-for="weather in weathers" :key="weather.id">
+      <v-col cols="12" v-for="(weather, index) in weatherForWeek" :key="index">
         <weather-card
-          v-bind="weather"
+          :icon="weather.weather[0].icon"
+          :name="weather.weather[0].main"
+          :temp="weather.dayTemperature"
+          :rainH="weather.rain"
         />
       </v-col>
     </v-row>
@@ -18,59 +21,11 @@ export default {
   components: {
     WeatherCard,
   },
-  data: () => ({
-    weathers: [
-      {
-        id: 1,
-        name: 'Burza',
-        temp: 10,
-        icon: '11d',
-        rainH: 15,
-      },
-      {
-        id: 2,
-        name: 'Słoneczko',
-        temp: 20,
-        icon: '01d',
-        rainH: 0,
-      },
-      {
-        id: 3,
-        name: 'Mgła',
-        temp: 8,
-        icon: '50d',
-        rainH: 5,
-      },
-      {
-        id: 4,
-        name: 'Zachmurzone',
-        temp: 12,
-        icon: '03d',
-        rainH: 5,
-      },
-      {
-        id: 5,
-        name: 'Zachmurzone',
-        temp: 12,
-        icon: '03d',
-        rainH: 5,
-      },
-      {
-        id: 6,
-        name: 'Deszcz',
-        temp: 10,
-        icon: '10d',
-        rainH: 10,
-      },
-      {
-        id: 7,
-        name: 'Deszcz',
-        temp: 10,
-        icon: '10d',
-        rainH: 10,
-      },
-    ],
-  }),
+  computed: {
+    weatherForWeek() {
+      return this.$store.getters.allWeather || [];
+    },
+  },
 };
 </script>
 
