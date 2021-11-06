@@ -1,0 +1,51 @@
+<template>
+  <v-container class="elevation-4 rounded-lg" v-ripple>
+    <v-row>
+      <v-col cols="4">
+        <v-img
+          :src="`http://openweathermap.org/img/wn/${icon}@2x.png`"
+          alt="weather icon"
+          style="-webkit-filter: drop-shadow(12px 12px 25px rgba(0,0,0,0.5));"
+          contain
+        />
+      </v-col>
+      <v-col cols="8">
+        <v-row dense class="fill-height text-right">
+          <v-col cols="12" align-self="end" class="d-flex justify-end title">
+            {{ name }} {{ temp }}°C
+          </v-col>
+          <v-col cols="12" align-self="end" class="d-flex justify-end subtitle-2">
+            Opad na godzinę {{ rainH }}mm
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+export default {
+  name: 'WeatherCard',
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    temp: {
+      type: Number,
+      required: true,
+    },
+    rainH: {
+      type: Number,
+      required: true,
+    },
+    icon: {
+      type: String,
+      required: true,
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+</style>
