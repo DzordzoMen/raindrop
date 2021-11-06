@@ -1,7 +1,5 @@
 <template>
-    <v-app>
-        <v-container>
-            Grant
-        </v-container>
-    </v-app>
+    <v-container>
+        Grant
+    </v-container>
 </template>

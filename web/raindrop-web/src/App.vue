@@ -75,4 +75,7 @@ export default {
   .v-main__wrap {
     background-color: #e1eeff;
   }
+  a {
+    text-decoration: none;
+  }
 </style>
