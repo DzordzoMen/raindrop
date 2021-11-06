@@ -25,6 +25,7 @@ namespace RaindropApi {
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services) {
+			services.AddCors();
 			services.AddAutoMapper(typeof(WeatherProfileMap).Assembly);
 			services.AddScoped<OpenWeatherService>();
 			services.AddControllers();
@@ -46,6 +47,14 @@ namespace RaindropApi {
 			app.UseRouting();
 
 			app.UseAuthorization();
+			
+			app.UseCors(builder =>
+				builder
+					.WithOrigins("http://localhost:8080")
+					.SetIsOriginAllowedToAllowWildcardSubdomains()
+					.AllowAnyMethod()
+					.AllowAnyHeader()
+					.AllowCredentials());
 
 			app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 		}
