@@ -14,6 +14,7 @@
             v-for="item in items"
             :key="item.title"
             link
+            @click="redirect(item.routerName)"
           >
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
@@ -26,10 +27,10 @@
         </v-list>
       </v-navigation-drawer>
       <v-main>
-      <v-container>
-        <router-view/>
-      </v-container>
-    </v-main>
+        <v-container>
+          <router-view/>
+        </v-container>
+      </v-main>
   </v-app>
 </template>
 
@@ -45,13 +46,18 @@ export default {
   data() {
     return {
       items: [
-        { title: 'O nas', icon: 'mdi-view-dashboard' },
-        { title: 'Jak zacząć', icon: 'mdi-image' },
-        { title: 'Dotacje', icon: 'mdi-image' },
-        { title: 'Ile zaoszczędzisz', icon: 'mdi-image' },
-        { title: 'Twoje zużycie wody', icon: 'mdi-image' },
+        { title: 'O nas', icon: 'mdi-view-dashboard', routerName: 'Home' },
+        { title: 'Jak zacząć', icon: 'mdi-image', routerName: 'Start' },
+        { title: 'Dotacje', icon: 'mdi-image', routerName: 'Grants' },
+        { title: 'Ile zaoszczędzisz', icon: 'mdi-image', routerName: 'Savings' },
+        { title: 'Twoje zużycie wody', icon: 'mdi-image', routerName: 'WaterConsumption' },
       ],
     };
+  },
+  methods: {
+    redirect(routerName) {
+      this.$router.push({ name: routerName });
+    },
   },
 };
 </script>

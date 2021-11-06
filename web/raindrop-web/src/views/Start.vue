@@ -1,5 +1,7 @@
 <template>
     <v-app>
-        How start
+        <v-container>
+            How start
+        </v-container>
     </v-app>
 </template>

@@ -1,55 +1,65 @@
 <template>
   <v-app>
-    <v-app-bar
+    <the-header />
+    <v-navigation-drawer
+      permanent
+      left
+      absolute
+      clipped
       app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+      class="v-theme--dark">
+        <v-list
+          dense
+          nav
+        >
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+            @click="redirect(item.routerName)"
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
-    <v-main>
-      <router-view/>
-    </v-main>
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-navigation-drawer>
+      <v-main>
+        <v-container>
+          <router-view/>
+        </v-container>
+      </v-main>
   </v-app>
 </template>
 
 <script>
 
+import TheHeader from '@/components/TheHeader.vue';
+
 export default {
   name: 'App',
-
-  data: () => ({
-    //
-  }),
+  components: {
+    TheHeader,
+  },
+  data() {
+    return {
+      items: [
+        { title: 'O nas', icon: 'mdi-view-dashboard', routerName: 'Home' },
+        { title: 'Jak zacząć', icon: 'mdi-image', routerName: 'Start' },
+        { title: 'Dotacje', icon: 'mdi-image', routerName: 'Grants' },
+        { title: 'Ile zaoszczędzisz', icon: 'mdi-image', routerName: 'Savings' },
+        { title: 'Twoje zużycie wody', icon: 'mdi-image', routerName: 'WaterConsumption' },
+      ],
+    };
+  },
+  methods: {
+    redirect(routerName) {
+      this.$router.push({ name: routerName });
+    },
+  },
 };
 </script>

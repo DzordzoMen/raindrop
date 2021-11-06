@@ -3,6 +3,7 @@
     app
     color="primary lighten-2"
     dark
+    clipped-left
   >
     <div class="d-flex align-center" style="gap: 10px">
       <v-img

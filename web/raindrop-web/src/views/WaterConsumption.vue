@@ -1,5 +1,7 @@
 <template>
     <v-app>
-        Water consuption
+        <v-container>
+            Water consuption
+        </v-container>
     </v-app>
 </template>

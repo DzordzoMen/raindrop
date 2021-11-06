@@ -1,5 +1,7 @@
 <template>
     <v-app>
-        Grant
+        <v-container>
+            Grant
+        </v-container>
     </v-app>
 </template>

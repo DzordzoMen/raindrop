@@ -1,15 +1,14 @@
 <template>
-  <dashboard />
+  <v-app>
+    <v-container>
+      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit</h1>
+    </v-container>
+  </v-app>
 </template>
 
 <script>
-import Dashboard from '../components/Dashboard.vue';
 
 export default {
   name: 'Home',
-
-  components: {
-    Dashboard,
-  },
 };
 </script>
