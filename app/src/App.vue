@@ -2,44 +2,60 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="primary lighten-2"
       dark
     >
-      <div class="d-flex align-center">
+      <div class="d-flex align-center" style="gap: 10px">
         <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
+          alt="Raindrop Logo"
           contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
+          src="./assets/logo.svg"
           width="40"
+          height="40"
         />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+        <span class="headline">
+          Raindrop
+        </span>
       </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-main>
       <router-view/>
     </v-main>
+
+    <v-bottom-navigation
+      v-model="navigation"
+      app
+      grow
+      color="primary"
+      mandatory
+      shift
+    >
+      <v-btn :to="{ name: 'Rainwater' }">
+        <span>
+          Woda
+        </span>
+        <v-icon>
+          mdi-water-sync
+        </v-icon>
+      </v-btn>
+      <v-btn :to="{ name: 'Devices' }">
+        <span>
+          Urządzenia
+        </span>
+        <v-icon>
+          mdi-tablet-cellphone
+        </v-icon>
+      </v-btn>
+      <v-btn :to="{ name: 'Weather' }">
+        <span>
+          Pogoda
+        </span>
+        <v-icon>
+          mdi-weather-cloudy
+        </v-icon>
+      </v-btn>
+    </v-bottom-navigation>
   </v-app>
 </template>
 
@@ -49,7 +65,13 @@ export default {
   name: 'App',
 
   data: () => ({
-    //
+    navigation: null,
   }),
 };
 </script>
+
+<style lang="scss">
+.v-main__wrap {
+  background-color: hsl(0deg 0% 81% / 50%);
+}
+</style>
