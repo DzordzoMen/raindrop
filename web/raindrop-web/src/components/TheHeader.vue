@@ -17,10 +17,20 @@
         Raindrop
       </span>
     </div>
+    <v-spacer></v-spacer>
+    <button class="d-flex align-right">
+      <span>
+        Przejdź do aplikacji
+      </span>
+      <v-icon>
+        arrow-right-thin
+      </v-icon>
+    </button>
   </v-app-bar>
 </template>
 
 <script>
+
 export default {
   name: 'TheHeader',
 };
