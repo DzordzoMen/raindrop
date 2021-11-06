@@ -101,7 +101,7 @@ export default {
       animation: circle-animation 2s linear forwards;
       transform-origin: center;
       transform-box: fill-box;
-      transform: rotate(85deg);
+      transform: rotate(90deg);
     }
   }
 }

@@ -11,6 +11,7 @@
       app
       grow
       color="primary"
+      background-color="grey lighten-3"
       mandatory
       shift
     >
