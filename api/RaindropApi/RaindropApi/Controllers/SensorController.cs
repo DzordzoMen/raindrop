@@ -5,8 +5,8 @@ namespace RaindropApi.Controllers {
     [Route("[controller]")]
     public class SensorController : ControllerBase {
         [HttpPost]
-        public IActionResult Post(double valume, ) {
-            
+        public IActionResult Post(decimal valume, string apiKey) {
+            return Ok();
         }
     }
 }
