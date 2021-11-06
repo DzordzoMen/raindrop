@@ -9,5 +9,6 @@ namespace RaindropApi.Model.Tanks {
 		public decimal MaxAmount { get; set; }
 		public DateTime UpdatedAt { get; set; }
 		public decimal TotalCollectedAmount { get; set; }
+		public IEnumerable<TankHistoryDay> History { get; set; }
 	}
 }

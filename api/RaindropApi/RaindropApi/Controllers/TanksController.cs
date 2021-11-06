@@ -14,6 +14,7 @@ namespace RaindropApi.Controllers {
 		public TanksController(IMapper mapper) {
 			_mapper = mapper;
 		}
+		
 		[HttpGet("id")]
 		public TankStatusDto GetById(int id) {
 			return _mapper.Map<TankStatusDto>(TanksStore.TankStatusList.Single(a => a.Id == id));
