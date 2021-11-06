@@ -56,6 +56,9 @@ export default {
         case 'dishwasher':
           icon = 'mdi-dishwasher';
           break;
+        case 'solar-panel':
+          icon = 'mdi-solar-panel-large';
+          break;
         default:
           break;
       }

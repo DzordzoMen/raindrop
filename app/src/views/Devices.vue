@@ -64,6 +64,13 @@ export default {
         location: 'Ogródek 2',
         connected: false,
       },
+      {
+        id: 5,
+        name: 'Panele',
+        type: 'solar-panel',
+        location: 'Dach',
+        connected: true,
+      },
     ],
   }),
 };
