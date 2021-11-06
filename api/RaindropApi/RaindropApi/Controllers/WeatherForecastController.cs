@@ -17,7 +17,7 @@ namespace RaindropApi.Controllers {
 		}
 
 		[HttpGet]
-		public async Task<IEnumerable<WeatherForecast>> Get() {
+		public async Task<IEnumerable<WeatherDaily>> Get() {
 			return await _weatherService.GetForecast(50.049683m,19.944544m);
 		}
 	}
