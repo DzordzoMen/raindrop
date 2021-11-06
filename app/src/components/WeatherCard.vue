@@ -1,5 +1,5 @@
 <template>
-  <v-container class="elevation-4 rounded-lg" v-ripple>
+  <v-container class="elevation-4 rounded-lg py-1" v-ripple>
     <v-row>
       <v-col cols="4">
         <v-img
@@ -11,6 +11,9 @@
       </v-col>
       <v-col cols="8">
         <v-row dense class="fill-height text-right">
+          <v-col cols="12" v-if="date">
+            {{ date }}
+          </v-col>
           <v-col cols="12" align-self="end" class="d-flex justify-end title">
             {{ name }} {{ temp }}°C
           </v-col>
@@ -30,6 +33,11 @@ export default {
     name: {
       type: String,
       required: true,
+    },
+    date: {
+      type: String,
+      required: false,
+      default: null,
     },
     temp: {
       type: Number,
