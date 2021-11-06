@@ -15,10 +15,13 @@
             {{ date }}
           </v-col>
           <v-col cols="12" align-self="end" class="d-flex justify-end title">
-            {{ name }} {{ temp }}°C
+            {{ name }} {{ temp.toFixed(0) }}°C
+          </v-col>
+          <v-col cols="12" align-self="end" class="d-flex justify-end subtitle-2" v-if="rainH">
+            Opad na godzinę {{ rainH }}mm
           </v-col>
           <v-col cols="12" align-self="end" class="d-flex justify-end subtitle-2">
-            Opad na godzinę {{ rainH }}mm
+            Brak opadów
           </v-col>
         </v-row>
       </v-col>
