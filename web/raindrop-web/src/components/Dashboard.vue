@@ -1,11 +1,11 @@
 <template>
-    <v-app id="inspire">
+  <v-container>
       <the-header />
-      <v-navigation-drawer v-model="drawer"
+      <v-navigation-drawer
       permanent
       left
       absolute
-      class="v-theme--dark">
+      class="menu-background">
         <v-list
           dense
           nav
@@ -31,7 +31,7 @@
           <router-view/>
         </v-container>
       </v-main>
-  </v-app>
+  </v-container>
 </template>
 
 <script>
@@ -61,3 +61,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .menu-background {
+    background-color: '#a5ccff' !important;
+  }
+</style>
