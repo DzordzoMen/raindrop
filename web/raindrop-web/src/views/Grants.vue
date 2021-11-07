@@ -84,6 +84,23 @@
                 min. 2 m3. W przypadku rezerwuarów nadziemnych zamkniętych o pojemności 1m3
                 konieczny jest zakup dwóch sztuk lub więcej.
             </v-col>
+
+            <v-col cols="12" class="pt-4">
+                <v-btn @click="openLink()">
+                    Zobacz instrukcję składania formularza
+                </v-btn>
+            </v-col>
         </v-row>
     </v-container>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  methods: {
+    openLink() {
+      window.open('https://docs.google.com/document/d/1WGnnpEAQVbihhWsiCqbTW1t_LSeiIbtBIagUDG0eWW8/edit#heading=h.k1d4k48w19go', '_blank');
+    },
+  },
+};
+</script>
