@@ -25,6 +25,16 @@
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
+          <v-list-item link @click="openRankomat()">
+            <v-list-item-icon>
+              <v-icon>mdi-water-alert-outline</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>Twoje zużycie wody</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
       <v-main>
@@ -51,13 +61,15 @@ export default {
         { title: 'Jak zacząć', icon: 'mdi-help', routerName: 'Start' },
         { title: 'Dotacje', icon: 'mdi-cash-multiple', routerName: 'Grants' },
         { title: 'Ile zaoszczędzisz', icon: 'mdi-calculator', routerName: 'Savings' },
-        { title: 'Twoje zużycie wody', icon: 'mdi-water-alert-outline', routerName: 'WaterConsumption' },
       ],
     };
   },
   methods: {
     redirect(routerName) {
       this.$router.push({ name: routerName });
+    },
+    openRankomat() {
+      window.open('https://rankomat.pl/woda/#/', '_blank');
     },
   },
 };
