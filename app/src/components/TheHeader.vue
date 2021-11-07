@@ -17,6 +17,14 @@
         Raindrop
       </span>
     </div>
+    <div class="d-flex ml-auto">
+      <v-avatar size="42" style="border: 2px solid #fff">
+        <img
+          src="https://cdn.vuetifyjs.com/images/john.jpg"
+          alt="John"
+        >
+      </v-avatar>
+    </div>
   </v-app-bar>
 </template>
 
