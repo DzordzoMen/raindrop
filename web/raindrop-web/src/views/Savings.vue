@@ -31,6 +31,7 @@
                             label="Typ dachu"
                             :items="items"
                             @select = "$v.roofType.$model = $event"
+                            @change = "Change()"
                             >
                             </v-select>
                         </v-col>
@@ -48,20 +49,29 @@
                         <v-col cols="4">
                             <v-checkbox v-model="ifWateringGarden"
                             label="Czy podlewasz ogród?"
-                            @change = "Change()"
                             >
                             </v-checkbox>
                         </v-col>
                         <v-col cols="4">
-                               <v-btn
+                            <v-text-field v-model="gardenArea"
+                            label="Powierzchnia ogrodu"
+                            placeholder="Wartoś w m2"
+                            :disabled="!ifWateringGarden"
+                            >
+                            </v-text-field>
+                        </v-col>
+                    </v-row>
+                </v-container>
+                <v-container>
+                    <div class="div-loc">
+                    <v-btn
                             @click="Calculate"
                             class="location"
                             :disabled="shouldBeDisabled"
                             >
                             Przelicz
                             </v-btn>
-                        </v-col>
-                    </v-row>
+                    </div>
                 </v-container>
             </form>
         </div>
@@ -89,19 +99,22 @@ export default {
     annualWaterRequirements: '',
     sizeOfTank: '',
     runoffCoefficient: '',
+    gardenArea: '',
   }),
   computed: {
     shouldBeDisabled() {
       return (this.amountOfRainfall === '' || this.effectiveSizeOfRoofArea === '' || this.roofType === ''
-      || this.amountOfPeople === '');
+      || this.amountOfPeople === '' || (this.ifWateringGarden === true && this.gardenArea === ''));
     },
   },
   methods: {
     Calculate() {
+      // const activities = 13500;
       this.annualRainfall = this.amountOfRainfall * this.effectiveSizeOfRoofArea
       * this.runoffCoefficient;
     },
     Change() {
+      console.log(this.roofType);
       switch (this.roofType) {
         case 'skośny pokryty blachą / dachówką ceramiczną glazurowaną':
           this.runoffCoefficient = 0.9;
@@ -129,6 +142,10 @@ export default {
 <style lang="scss" scoped>
     .location {
         margin-top: 20px;
-        width: 100%;
+        width: 25%;
+    }
+    .div-loc {
+        display: flex;
+        justify-content: flex-end;
     }
 </style>
