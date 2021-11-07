@@ -4,13 +4,13 @@ using Bogus;
 
 namespace RaindropApi.Model.Tanks {
 	public class TankDataGenerator {
-		public static IEnumerable<TankHistory> Generate(int tankId, int count = 60 * 24 * 3) {
+		public static IEnumerable<TankHistory> Generate(int tankId, int count = 60 * 24 * 7) {
 			var faker = new Faker();
 			var list = new List<TankHistory>() {
 				new TankHistory() {
 					TankId = tankId,
 					CurrentVolume = faker.Random.Decimal(3000, 6000),
-					UpdatedAt = DateTime.Today.AddDays(-3)
+					UpdatedAt = DateTime.Today.AddDays(-7)
 				}
 			};
 
@@ -18,7 +18,7 @@ namespace RaindropApi.Model.Tanks {
 				var previous = list[i - 1];
 				var tankHistory = new TankHistory() {
 					TankId = tankId,
-					CurrentVolume = previous.CurrentVolume - faker.Random.Decimal(-2, 1),
+					CurrentVolume = previous.CurrentVolume - faker.Random.Decimal(-1.5m, 1),
 					UpdatedAt = previous.UpdatedAt.AddMinutes(1)
 				};
 				list.Add(tankHistory);
