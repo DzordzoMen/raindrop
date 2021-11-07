@@ -10,13 +10,13 @@ namespace RaindropApi.Controllers {
 			TotalCollectedAmount = 23_034
 		};
 		
-		[HttpGet("id")]
-		public UserInfo GetById(int id = 1) {
+		[HttpGet("{id}")]
+		public UserInfo GetById([FromRoute] int id = 1) {
 			return _userInfo;
 		}
 
-		[HttpPut("id")]
-		public UserInfo Update(UserInfoPut put, int id = 1) {
+		[HttpPut("{id}")]
+		public UserInfo Update(UserInfoPut put,[FromRoute] int id = 1) {
 			_userInfo.RoofArea = put.RoofArea;
 			return _userInfo;
 		}

@@ -15,8 +15,8 @@ namespace RaindropApi.Controllers {
 			_mapper = mapper;
 		}
 		
-		[HttpGet("id")]
-		public TankStatusDto GetById(int id) {
+		[HttpGet("{id}")]
+		public TankStatusDto GetById([FromRoute] int id) {
 			return _mapper.Map<TankStatusDto>(TanksStore.TankStatusList.Single(a => a.Id == id));
 		}
 		
@@ -38,8 +38,8 @@ namespace RaindropApi.Controllers {
 			return _mapper.Map<TankStatusDto>(tankStatus);
 		}
 		
-		[HttpPut("id")]
-		public ActionResult<TankStatusDto> Put(int id, TankStatusPut put) {
+		[HttpPut("{id}")]
+		public ActionResult<TankStatusDto> Put([FromRoute] int id, TankStatusPut put) {
 			var tankStatus = TanksStore.TankStatusList.SingleOrDefault(a => a.Id == id);
 			if (tankStatus == null) return NotFound();
 
@@ -48,8 +48,8 @@ namespace RaindropApi.Controllers {
 			return _mapper.Map<TankStatusDto>(tankStatus);
 		}
 		
-		[HttpDelete("id")]
-		public IActionResult Delete(int id) {
+		[HttpDelete("{id}")]
+		public IActionResult Delete([FromRoute] int id) {
 			var tankStatus = TanksStore.TankStatusList.SingleOrDefault(a => a.Id == id);
 			if (tankStatus == null) return NotFound();
 			TanksStore.TankStatusList.Remove(tankStatus);
