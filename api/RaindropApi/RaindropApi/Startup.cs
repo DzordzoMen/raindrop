@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RaindropApi.Model.Weather;
+using RaindropApi.Services;
 
 namespace RaindropApi {
 	public class Startup {
@@ -22,6 +17,9 @@ namespace RaindropApi {
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services) {
+			services.AddCors();
+			services.AddAutoMapper(typeof(WeatherProfileMap).Assembly);
+			services.AddScoped<OpenWeatherService>();
 			services.AddControllers();
 			services.AddSwaggerGen(c => {
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "RaindropApi", Version = "v1" });
@@ -41,6 +39,14 @@ namespace RaindropApi {
 			app.UseRouting();
 
 			app.UseAuthorization();
+
+			app.UseCors(builder =>
+				builder
+					.WithOrigins("http://localhost:8080", "http://localhost:8081", "http://localhost:1024")
+					.SetIsOriginAllowedToAllowWildcardSubdomains()
+					.AllowAnyMethod()
+					.AllowAnyHeader()
+					.AllowCredentials());
 
 			app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 		}
