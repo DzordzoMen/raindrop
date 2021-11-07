@@ -2,8 +2,8 @@
 # abort on errors
 set -e
 # build
-npm run build
+cd web/randdrop-web && npm run build
 # add dist to commit and push it to gh-pages branch
-git add dist
+git add web/raindrop-web/dist
 git commit -m 'updating dist subtree'
-git subtree push --prefix dist origin gh-pages
+git subtree push --prefix web/raindrop-web/dist origin gh-pages
