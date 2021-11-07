@@ -4,6 +4,7 @@ import Home from '../views/Home.vue';
 import Rainwater from '../views/Rainwater.vue';
 import Devices from '../views/Devices.vue';
 import Weather from '../views/Weather.vue';
+import Stats from '../views/Stats.vue';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/weather',
     name: 'Weather',
     component: Weather,
+  },
+  {
+    path: '/stats',
+    name: 'Stats',
+    component: Stats,
   },
 ];
 

@@ -8,9 +8,11 @@ export default new Vuex.Store({
   state: {
     devices: [],
     weather: [],
+    history: [],
   },
   getters: {
     firstDevice: (state) => state.devices[0] || {},
+    deviceHistory: (state) => state.history || [],
     allWeather: (state) => state.weather || [],
     currentWeather: (state) => state.weather[0] || {},
   },
@@ -20,6 +22,9 @@ export default new Vuex.Store({
     },
     setWeather(state, data) {
       state.weather = data;
+    },
+    setHistory(state, data) {
+      state.history = data;
     },
   },
   actions: {
@@ -31,6 +36,12 @@ export default new Vuex.Store({
     fetchWeather({ commit }) {
       Api.get('/weatherForecast').then(({ data }) => {
         commit('setWeather', data);
+      });
+    },
+    fetchHistory({ commit }) {
+      Api.get('/tanks/1').then(({ data }) => {
+        commit('setHistory', data.history);
+        console.log(data.history);
       });
     },
   },
