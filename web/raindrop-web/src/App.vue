@@ -4,7 +4,6 @@
     <v-navigation-drawer
       permanent
       left
-      absolute
       clipped
       app
       class="v-theme--dark">
@@ -73,7 +72,10 @@ export default {
     font-family: 'Nunito', sans-serif;
   }
   .v-main__wrap {
-    background-color: #e1eeff;
+    background-color: #e1eeff !important;
+  }
+  .v-navigation-drawer {
+    background-color: #a5ccff !important;
   }
   a {
     text-decoration: none;
