@@ -11,14 +11,16 @@
       </v-col>
       <v-col cols="8">
         <v-row dense class="fill-height text-right">
-          <v-col cols="12" v-if="date">
-            {{ date }}
-          </v-col>
           <v-col cols="12" align-self="end" class="d-flex justify-end title">
             {{ convertName }} {{ temp.toFixed(0) }}°C
           </v-col>
+
+          <v-col cols="12" v-if="date">
+            {{ convertDate(date) }}
+          </v-col>
+
           <v-col cols="12" align-self="end" class="d-flex justify-end subtitle-2" v-if="rainH">
-            Opad na godzinę {{ rainH }}mm
+            Opady na godzinę {{ rainH }}mm
           </v-col>
           <v-col cols="12" align-self="end" class="d-flex justify-end subtitle-2" v-else>
             Brak opadów
@@ -38,7 +40,7 @@ export default {
       required: true,
     },
     date: {
-      type: String,
+      type: [String, Date],
       required: false,
       default: null,
     },
@@ -79,6 +81,15 @@ export default {
           break;
       }
       return newName;
+    },
+  },
+  methods: {
+    convertDate(date) {
+      try {
+        return new Intl.DateTimeFormat('pl', { dateStyle: 'long' }).format(new Date(date));
+      } catch (e) {
+        return date;
+      }
     },
   },
 };
