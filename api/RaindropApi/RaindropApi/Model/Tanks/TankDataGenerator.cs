@@ -9,7 +9,7 @@ namespace RaindropApi.Model.Tanks {
 			var list = new List<TankHistory>() {
 				new TankHistory() {
 					TankId = tankId,
-					CurrentVolume = faker.Random.Decimal(3000, 6000),
+					CurrentVolume = faker.Random.Decimal(3000, 4000),
 					UpdatedAt = DateTime.Today.AddDays(-7)
 				}
 			};
@@ -18,7 +18,7 @@ namespace RaindropApi.Model.Tanks {
 				var previous = list[i - 1];
 				var tankHistory = new TankHistory() {
 					TankId = tankId,
-					CurrentVolume = previous.CurrentVolume - faker.Random.Decimal(-1.5m, 1),
+					CurrentVolume = previous.CurrentVolume - faker.Random.Decimal(-2m, 1),
 					UpdatedAt = previous.UpdatedAt.AddMinutes(1)
 				};
 				list.Add(tankHistory);
