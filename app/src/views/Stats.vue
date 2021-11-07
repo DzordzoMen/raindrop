@@ -8,6 +8,21 @@
           ref="chart"
         />
       </v-col>
+
+      <v-col cols="12" class="text-center pt-8">
+        <div class="headline font-weight-bold">
+          Udało Ci się już zaoszczędzić 250zł
+        </div>
+        <div class="body-1 pt-1 text--secondary">
+          To wartość 16 perlatorów
+        </div>
+      </v-col>
+
+      <!-- <v-col cols="12" class="pt-8 text-center">
+        <div class="title">
+          Zasiliłeś już 2 wody gruntowne
+        </div>
+      </v-col> -->
     </v-row>
   </v-container>
 </template>
