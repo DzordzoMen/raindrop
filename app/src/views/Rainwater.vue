@@ -9,10 +9,17 @@
           :rainH="currentWeather.rain || 0"
         />
       </v-col>
+
+      <v-col cols="12" v-if="showWarn">
+        <v-alert type="error" color="red lighten-1" border="bottom" class="ma-0" dark>
+          Zbiornik niedługo się przepełni
+        </v-alert>
+      </v-col>
+
       <v-col
         cols="12"
         class="d-flex align-center justify-center"
-        style="height: 450px"
+        :style="showWarn ? 'height: 400px' : 'height: 450px'"
       >
         <the-circle :percent="tankFillPercentage">
           <v-row dense class="flex-column text-center headline font-weight-bold">
@@ -64,6 +71,9 @@ export default {
     tankFillPercentage() {
       const { tankCurrent, tankCapacity } = this;
       return (tankCurrent / tankCapacity) * 100;
+    },
+    showWarn() {
+      return this.tankFillPercentage >= 90;
     },
   },
 };
