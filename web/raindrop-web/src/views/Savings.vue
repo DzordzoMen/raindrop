@@ -14,7 +14,6 @@
                             <v-text-field v-model="amountOfRainfall"
                             label="Średnia wielkość opadów w ciągu roku"
                             placeholder="Wartość w mm"
-                            @input = "$v.amountOfRainfall.$model = $event"
                             >
                             </v-text-field>
                         </v-col>
@@ -22,7 +21,6 @@
                             <v-text-field v-model="effectiveSizeOfRoofArea"
                             label="Efektywna wielkość powierzchni dachu"
                             placeholder="Rzut poziomy powierzchni dachu"
-                            @input = "$v.effectiveSizeOfRoofArea.$model = $event"
                             >
                             </v-text-field>
                         </v-col>
@@ -30,7 +28,6 @@
                             <v-select v-model="roofType"
                             label="Typ dachu"
                             :items="items"
-                            @select = "$v.roofType.$model = $event"
                             @change = "Change()"
                             >
                             </v-select>
@@ -42,7 +39,6 @@
                         <v-col cols="4">
                             <v-text-field v-model="amountOfPeople"
                             label="Liczba domowników"
-                            @input = "$v.amountOfPeople.$model = $event"
                             >
                             </v-text-field>
                         </v-col>
@@ -75,6 +71,29 @@
                 </v-container>
             </form>
         </div>
+        <v-row v-show="isCounted">
+            <v-col cols="12">
+                <h2>Twoje wyniki</h2>
+            </v-col>
+            <v-col cols="4">
+                <v-card>
+                    <v-card-title>Roczna iloś wody deszczowej</v-card-title>
+                    <v-card-text><b>{{this.annualRainfall}} l/rok</b></v-card-text>
+                </v-card>
+            </v-col>
+            <v-col cols="4">
+                <v-card>
+                    <v-card-title>Roczne zapotrzebowanie na wodę</v-card-title>
+                    <v-card-text><b>{{this.annualWaterRequirements}} l/rok</b></v-card-text>
+                </v-card>
+            </v-col>
+            <v-col cols="4">
+                <v-card>
+                    <v-card-title>Zalecana wielkoś zbiornika na wodę</v-card-title>
+                    <v-card-text><b>5000 l</b></v-card-text>
+                </v-card>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
@@ -100,6 +119,7 @@ export default {
     sizeOfTank: '',
     runoffCoefficient: '',
     gardenArea: '',
+    isCounted: false,
   }),
   computed: {
     shouldBeDisabled() {
@@ -109,12 +129,21 @@ export default {
   },
   methods: {
     Calculate() {
-      // const activities = 13500;
+      const activities = 13500;
       this.annualRainfall = this.amountOfRainfall * this.effectiveSizeOfRoofArea
       * this.runoffCoefficient;
+      this.annualWaterRequirements = activities * this.amountOfPeople;
+      if (this.ifWateringGarden) {
+        this.annualWaterRequirements += 60 * this.gardenArea;
+      }
+      this.sizeOfTank = (((this.annualRainfall / 2)
+      + ((this.annualWaterRequirements * 21) / 356)) / 100) * 5;
+      console.log(this.sizeOfTank);
+      this.sizeOfTank += (1000 - (this.sizeOfTank % 1000));
+      console.log(this.sizeOfTank);
+      this.isCounted = true;
     },
     Change() {
-      console.log(this.roofType);
       switch (this.roofType) {
         case 'skośny pokryty blachą / dachówką ceramiczną glazurowaną':
           this.runoffCoefficient = 0.9;

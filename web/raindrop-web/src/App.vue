@@ -47,11 +47,11 @@ export default {
   data() {
     return {
       items: [
-        { title: 'O nas', icon: 'mdi-view-dashboard', routerName: 'Home' },
-        { title: 'Jak zacząć', icon: 'mdi-image', routerName: 'Start' },
-        { title: 'Dotacje', icon: 'mdi-image', routerName: 'Grants' },
-        { title: 'Ile zaoszczędzisz', icon: 'mdi-image', routerName: 'Savings' },
-        { title: 'Twoje zużycie wody', icon: 'mdi-image', routerName: 'WaterConsumption' },
+        { title: 'O nas', icon: 'mdi-account-group', routerName: 'Home' },
+        { title: 'Jak zacząć', icon: 'mdi-help', routerName: 'Start' },
+        { title: 'Dotacje', icon: 'mdi-cash-multiple', routerName: 'Grants' },
+        { title: 'Ile zaoszczędzisz', icon: 'mdi-calculator', routerName: 'Savings' },
+        { title: 'Twoje zużycie wody', icon: 'mdi-water-alert-outline', routerName: 'WaterConsumption' },
       ],
     };
   },
