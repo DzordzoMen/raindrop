@@ -39,6 +39,14 @@
           mdi-weather-cloudy
         </v-icon>
       </v-btn>
+      <v-btn :to="{ name: 'Stats' }">
+        <span>
+          Statystyki
+        </span>
+        <v-icon>
+          mdi-finance
+        </v-icon>
+      </v-btn>
     </v-bottom-navigation>
   </v-app>
 </template>
@@ -57,6 +65,7 @@ export default {
   created() {
     this.$store.dispatch('fetchDevices');
     this.$store.dispatch('fetchWeather');
+    this.$store.dispatch('fetchHistory');
   },
 };
 </script>
