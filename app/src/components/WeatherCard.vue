@@ -20,7 +20,7 @@
           </v-col>
 
           <v-col cols="12" align-self="end" class="d-flex justify-end subtitle-2" v-if="rainH">
-            Opady na godzinę {{ rainH }}mm
+            Opady {{ rainH }}mm
           </v-col>
           <v-col cols="12" align-self="end" class="d-flex justify-end subtitle-2" v-else>
             Brak opadów
