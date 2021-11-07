@@ -90,7 +90,7 @@
             <v-col cols="4">
                 <v-card>
                     <v-card-title>Zalecana wielkoś zbiornika na wodę</v-card-title>
-                    <v-card-text><b>5000 l</b></v-card-text>
+                    <v-card-text><b>{{this.sizeOfTank}} l</b></v-card-text>
                 </v-card>
             </v-col>
         </v-row>
