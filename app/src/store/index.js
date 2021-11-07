@@ -41,7 +41,6 @@ export default new Vuex.Store({
     fetchHistory({ commit }) {
       Api.get('/tanks/1').then(({ data }) => {
         commit('setHistory', data.history);
-        console.log(data.history);
       });
     },
   },
