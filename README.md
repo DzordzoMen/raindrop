@@ -13,7 +13,7 @@ Team "Śpiące wydry":
 * [Maciej Romanowski](https://github.com/DzordzoMen)
 * [Katarzyna Kądziołka](https://github.com/Katarzyna-Kadziolka)
 * [Krystyna Szybalska](https://github.com/Krystyna-Szybalska)
-* [Hubert Morawski](https://github.com/Morasiun)
+* [Hubert Morawski](https://github.com/Morasiu)
 
 ## Infomation site
 
