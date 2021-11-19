@@ -5,7 +5,7 @@
 
 Raindrop is an intelligent assistant that helps you set up and manage your home rainwater tank.
 
-![image](https://user-images.githubusercontent.com/19236279/142598161-4f7a9b10-8970-4338-83ca-92ac61a620b2.png)
+![image](https://user-images.githubusercontent.com/19236279/142620659-13133d99-709e-4e55-bda6-15ba1b1741f3.png)
 
 > Made in Aquathon 2021
 
